@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mastermind</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+
+        <main id="app">
+            
+            <h1>mastermind</h1>
+
+            <div v-if="script.start" class="home">
+                <p>
+                    A puzzle game for two.<br>
+                    One creates the master code.<br>
+                    The other must guess it.
+                </p>
+                <button class="btn" @click="initMasterCode()">Start playing</button>
+                <div class="colorblind">
+                    <label for="colblind">Enable color blind mode</label>
+                    <input type="checkbox" v-model="colorblind_mode" id="colblind">
+                </div>
+            </div>
+
+            <div v-if="script.make_master_code" class="mastercode">
+                <h2>Create mastercode</h2>
+                <colorpicker v-for="(m, i) in mastercode" :idx="i" v-on:pick="setMasterCodeColor" :colorblindmode="colorblind_mode"></colorpicker>
+                <p>
+                    The other player will try to guess this code.<br>
+                    <em>Don't let him or her see it.</em>
+                </p>
+                <button class="btn" @click="initGuess()">Ready</button>
+            </div>
+
+            <div class="coderef" v-if="script.game_over">
+                <p class="coderef--label">master code</p>
+                <div class="code">
+                    <span v-for="m in mastercode" :class="`code--color code--color-${ m } colorblind-${ colorblind_mode }`">{{ m }}</span>
+                </div>
+            </div>
+
+            <ol class="guesses" v-if="attempts.length > 0">
+                <li v-for="a in attempts" class="guesses--guess">
+                    <div class="hints">
+                        <span v-for="h in a.hints" :class="{'hint-a': h === 2, 'hint-b': h === 1}"></span>
+                    </div>
+                    <div class="code">
+                        <span v-for="g in a.guess" :class="`code--color code--color-${ g } colorblind-${ colorblind_mode }`">{{ g }}</span>
+                    </div>
+                </li>
+            </ol>
+
+            <div v-if="script.guess_code" class="guess-code">
+                <p>Try to guess the master code</p>
+                <colorpicker v-for="(g, i) in current_guess" :idx="i" v-on:pick="setGuessColor" :iteration="attempts.length" :colorblindmode="colorblind_mode"></colorpicker>
+                <button class="btn guessbtn" @click="resolveGuess()">Guess</button>
+
+                <div style="display: none; margin: 3rem 1rem 1rem; text-align: left;">
+                    <h3 style="font-weight: normal; font-size: 1.1em; margin: .5rem 0; color: #666;">Hints:</h3>
+                    <p>
+                        <span class="hint-a"></span> <span style="color: #666;">One correct color set in the right position</span><br>
+                        <span class="hint-b"></span> <span style="color: #666;">One correct color</span><br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div v-if="script.game_win" class="win">
+                <h2 class="win--label">You win</h2>
+                <p>
+                    You cracked the code in {{ attempts.length }} attempts.<br>
+                    <em>Praises will be sung about your victory.</em>
+                </p>
+                <button class="btn" @click="reset()">Play again</button>
+                <div class="fireworks" :class="{'fireworks-ignite': script.game_win}">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div v-if="script.game_loose" class="loose">
+                <h2 class="loose--label">Unfortunately, you are terrible at this</h2>
+                <p>You have had {{ attempts.length }} attempts at cracking the master code but still you fail.</p>
+                <p>You are a miserable, horrible person.</p>
+                <p><em>Shame on you.</em></p>
+                <button class="btn" @click="reset()">Brush yourself off and try again</button>
+            </div>
+        
+        </main>
+
+        <script src="./js/vue.js"></script>
+        <script src="./js/main.js"></script>
+
+    </body>
+</html>

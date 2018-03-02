@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eee;
+    font: 1rem/1.2 sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+h1 {
+    margin: 1rem 0 2rem;
+    font-size: 2.5rem;
+    border-bottom: solid 1px #ddd;
+    padding: 0 0 1rem;
+}
+
+fieldset {
+    border: none;
+}
+
+#app {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+}
+
+.home,
+.mastercode,
+.guess-code,
+.win,
+.loose {
+    text-align: center;
+}
+
+.code--color {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: .25rem .125rem;
+    text-indent: -1000em;
+}
+
+.colorpicker {
+    display: inline-block;
+    position: relative;
+    margin: 1rem .25rem;
+}
+
+.colorpicker--btn {
+    height: 3rem;
+    width: 3rem;
+    text-indent: -1000em;
+    border: none;
+    border-radius: 50%;
+}
+
+.colorpicker--menu {
+    z-index: 1000;
+    position: absolute;
+    height: auto;
+    width: 12rem;
+    padding: .25rem;
+    display: flex;
+    flex-flow: row wrap;
+    left: -5rem;
+    top: 3rem;
+    background-color: #fff;
+    border-radius: .5rem;
+    box-shadow: 0 .25rem .5rem rgba(0,0,0,.1);
+}
+
+.colorpicker--menu::before {
+    content: '';
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: #fff;
+}
+
+.colorpicker--pick {
+    flex: 1 0 2rem;
+    padding: .25rem;
+}
+
+.colorpicker--pick span {
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    text-indent: -1000em;
+    border-radius: 50%;
+}
+
+.code--color-0,
+.colorpicker--btn-set0,
+.colorpicker--pick-0 {
+    background-color: transparent;
+    border: solid 1px #000;
+}
+
+.code--color-1,
+.colorpicker--btn-set1,
+.colorpicker--pick-1,
+.fireworks span:nth-child(1) {
+    background-color: #BF3078;
+}
+
+.code--color-2,
+.colorpicker--btn-set2,
+.colorpicker--pick-2,
+.fireworks span:nth-child(2) {
+    background-color: #BF7830;
+}
+
+.code--color-3,
+.colorpicker--btn-set3,
+.colorpicker--pick-3,
+.fireworks span:nth-child(3) {
+    background-color: #BFBF30;
+}
+
+.code--color-4,
+.colorpicker--btn-set4,
+.colorpicker--pick-4,
+.fireworks span:nth-child(4) {
+    background-color: #30BF78;
+}
+
+.code--color-5,
+.colorpicker--btn-set5,
+.colorpicker--pick-5,
+.fireworks span:nth-child(5) {
+    background-color: #3078BF;
+}
+
+.code--color-6,
+.colorpicker--btn-set6,
+.colorpicker--pick-6,
+.fireworks span:nth-child(6) {
+    background-color: #7830BF;
+}
+
+.btn {
+    background: #BF7830;
+    color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    margin: 1rem .5rem;
+    font-size: 1rem;
+}
+
+.guessbtn {
+    display: block;
+    margin: .5rem auto;
+}
+
+.coderef {
+    border-bottom: solid 1px #ddd;
+    padding: 0 0 .5rem;
+    margin: 0 0 1rem;
+}
+
+.guesses {
+    border-bottom: solid 1px #ddd;
+    padding: 0 0 1rem;
+    margin: 0 0 1rem;
+}
+
+.guesses--guess,
+.coderef {
+    display: flex;
+    align-items: center;
+}
+
+.coderef--label,
+.hints {
+    margin: .25rem;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.hint-a,
+.hint-b {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.hint-a {
+    background-color: black;
+}
+
+.hint-b {
+    border: solid 1px black;
+}
+
+.win--label,
+.loose--label {
+    color: #BF7830;
+    margin: 1rem 0;
+}
+
+.fireworks {
+    position: fixed;
+    bottom: -4rem;
+    left: 1rem;
+    right: 1rem;
+}
+
+.fireworks span {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    animation-name: bounce;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+.fireworks span:nth-child(1) {
+    animation-duration: 1.1s;
+    animation-delay: 1.5s;
+}
+
+.fireworks span:nth-child(2) {
+    animation-duration: .8s;
+    animation-delay: .75s;
+}
+
+.fireworks span:nth-child(3) {
+    animation-duration: .9s;
+    animation-delay: .5s;
+}
+
+.fireworks span:nth-child(4) {
+    animation-duration: .7s;
+}
+
+.fireworks span:nth-child(5) {
+    animation-duration: 1.2s;
+}
+
+.fireworks span:nth-child(6) {
+    animation-duration: 1s;
+    animation-delay: .25s;
+}
+
+@keyframes bounce {
+    0%   {transform: translate(0, 0); opacity: 1;}
+    100%  {transform: translate(0, -85vh); opacity: 0;}
+}
+
+.colorblind {
+    color: #666;
+    margin: 2rem 0 1rem;
+}
+
+.colorblind-true {
+    text-indent: 0 !important;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+}
