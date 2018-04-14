@@ -1,7 +1,6 @@
-var CACHE_NAME = 'superkopf-cache-v2';
+var CACHE_NAME = 'superkopf-cache-v4';
 var urlsToCache = [
     './index.html',
-    './css/main.css',
     './js/vue.js',
     './js/main.js',
     './img/fingerprint.png'
