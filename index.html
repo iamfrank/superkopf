@@ -3,10 +3,16 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Superkopf</title>
+        <title>superkopf, the logical puzzle game</title>
         <meta name="description" content="Superkopf is a logical puzzle game inspired by the classic board game Mastermind">
         <meta name="author" content="Frank Thomsen Renard">
         <link rel="manifest" href="./manifest.json">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="./img/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon-96x96.png">
+        <meta name="msapplication-TileColor" content="#eee">
+        <meta name="msapplication-TileImage" content="./img/ms-icon-144x144.png">
         <meta name="theme-color" content="#eee">
         <style>
             * {
@@ -19,12 +25,6 @@
                 font: 1rem/1.2 sans-serif;
                 color: #333;
                 margin: 0;
-            }
-            h1 {
-                margin: 1rem 0 2rem;
-                font-size: 2.5rem;
-                border-bottom: solid 1px #ddd;
-                padding: 0 0 1rem;
             }
             fieldset {
                 border: none;
@@ -51,12 +51,25 @@
                 text-align: center;
             }
             .btn {
-                background: #000;
-                color: #fff;
-                padding: 1rem;
+                background: transparent;
+                color: #333;
+                border: solid 1px #ccc;
+                padding: .75rem 1rem;
                 border-radius: .5rem;
                 margin: 1rem .5rem;
-                font-size: 1rem;
+                font-size: .8rem;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-shadow: 0 .125rem .5rem rgba(0,0,0,.1);
+                display: inline-block;
+            }
+            .title {
+                margin: 1rem 0 2rem;
+                font-size: 2.5rem;
+                border-bottom: solid 1px #ddd;
+                padding: 0 0 1rem;
+                font-weight: bold;
+                letter-spacing: -.5px;
             }
             .code--color {
                 display: inline-block;
@@ -243,7 +256,7 @@
             }
             .colorblind {
                 color: #666;
-                margin: 2rem 0 1rem;
+                margin: 1rem 0;
             }
             .colorblind-true {
                 text-indent: 0 !important;
@@ -259,16 +272,17 @@
 
         <main id="app">
             
-            <h1>Superkopf</h1>
+            <h1 class="title">superkopf</h1>
 
             <div v-if="script.start" class="home">
+                <img src="./img/logo.svg" alt="" style="width: 4rem; height: auto; margin: 0 0 1rem;">
                 <p>
                     A puzzle game for two.<br>
                     One creates the master code.<br>
                     The other must guess it.
                 </p>
-                <button class="btn" @click="initMasterCode()">Start playing</button>
-                <button class="btn" @click="initRandomGame()">Start playing with random code</button>
+                <button class="btn" @click="initMasterCode()">Play (2 players)</button>
+                <button class="btn" @click="initRandomGame()">Play (1 player)</button>
                 <div class="colorblind">
                     <label for="colblind">Enable color blind mode</label>
                     <input type="checkbox" v-model="colorblind_mode" id="colblind">
@@ -343,8 +357,14 @@
         <script>
             UpUp.start({
                 'content-url': 'index.html', // show this page to offline users
-                'cache-version': 'v2',
-                'assets': ['/img/fingerprint.png', '/js/main.js', '/js/vue.js']
+                'cache-version': 'v3',
+                'assets': [
+                    '/img/*.png', 
+                    '/js/main.js', 
+                    '/js/vue.js', 
+                    '/favicon.ico',
+                    '/img/logo.svg'
+                ]
             });
         </script>
         <script src="./js/vue.js"></script>
