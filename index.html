@@ -309,7 +309,6 @@
             <div v-if="script.game_loose" class="loose">
                 <h2 class="loose--label">Unfortunately, you are terrible at this</h2>
                 <p>You have had {{ attempts.length }} attempts at cracking the master code but still you fail.</p>
-                <p>You are a miserable, horrible person.</p>
                 <p><em>Shame on you.</em></p>
                 <button class="btn" @click="reset()">Brush yourself off and try again</button>
             </div>
@@ -322,10 +321,8 @@
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
                     navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
-                        // Registration was successful
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
                     }, function(err) {
-                        // registration failed :(
                         console.log('ServiceWorker registration failed: ', err);
                     });
                 });
