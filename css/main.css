@@ -110,15 +110,6 @@
     background-color: #7830BF;
 }
 
-.btn {
-    background: #BF7830;
-    color: #fff;
-    padding: 1rem;
-    border-radius: .5rem;
-    margin: 1rem .5rem;
-    font-size: 1rem;
-}
-
 .guessbtn {
     display: block;
     margin: .5rem auto;

@@ -1,7 +1,6 @@
 var CACHE_NAME = 'superkopf-cache-v2';
 var urlsToCache = [
     './index.html',
-    //'./serviceworker.js',
     './css/main.css',
     './js/vue.js',
     './js/main.js',
