@@ -1,2 +1,2 @@
-# mastermind
-The classic board game, Mastermind, as a webapp
+# Superkopf
+Superkopf is a logical puzzle game inspired by the classic board game Mastermind.
