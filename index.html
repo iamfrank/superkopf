@@ -10,19 +10,38 @@
         <meta name="theme-color" content="#eee">
         <style>
             * {
-                box-sizing: border-box;margin: 0;padding: 0;
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
             }
             body {
-                background-color: #eee;font: 1rem/1.2 sans-serif;color: #333;margin: 0;
+                background-color: #eee;
+                font: 1rem/1.2 sans-serif;
+                color: #333;
+                margin: 0;
             }
             h1 {
-                margin: 1rem 0 2rem;font-size: 2.5rem;border-bottom: solid 1px #ddd;padding: 0 0 1rem;
+                margin: 1rem 0 2rem;
+                font-size: 2.5rem;
+                border-bottom: solid 1px #ddd;
+                padding: 0 0 1rem;
             }
             fieldset {
                 border: none;
             }
             #app {
-                position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;display: flex;flex-flow: column nowrap;justify-content: flex-start;align-items: center;padding: 1rem;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 1rem;
             }
             .home, 
             .mastercode, 
@@ -32,7 +51,12 @@
                 text-align: center;
             }
             .btn {
-                background: #666;color: #fff;padding: 1rem;border-radius: .5rem;margin: 1rem .5rem;font-size: 1rem;
+                background: #000;
+                color: #fff;
+                padding: 1rem;
+                border-radius: .5rem;
+                margin: 1rem .5rem;
+                font-size: 1rem;
             }
             .code--color {
                 display: inline-block;
@@ -315,19 +339,16 @@
         
         </main>
 
+        <script src="./upup.min.js"></script>
+        <script>
+            UpUp.start({
+                'content-url': 'index.html', // show this page to offline users
+                'cache-version': 'v2',
+                'assets': ['/img/fingerprint.png', '/js/main.js', '/js/vue.js']
+            });
+        </script>
         <script src="./js/vue.js"></script>
         <script src="./js/main.js"></script>
-        <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    }, function(err) {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                });
-            }
-        </script>
 
     </body>
 </html>
