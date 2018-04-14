@@ -101,7 +101,7 @@ vm = new Vue({
             if (JSON.stringify(this.current_guess) === JSON.stringify(this.mastercode)) {
                 this.script.guess_code = false;
                 this.script.game_win = true;
-            } else if (this.attempts.length > 11) {
+            } else if (this.attempts.length > 12) {
                 this.script.guess_code = false;
                 this.script.game_loose = true;
             } else {

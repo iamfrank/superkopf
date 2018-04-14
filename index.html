@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Mastermind</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="./css/main.css">
+        <title>Superkopf</title>
+        <meta name="description" content="Superkopf is a logical puzzle game inspired by the classic board game Mastermind">
+        <meta name="author" content="Frank Thomsen Renard">
+        <link rel="manifest" href="./manifest.json">
+        <link rel="stylesheet" href="./css/main.css" async="defer">
+        <style>
+            * {box-sizing: border-box;margin: 0;padding: 0;}
+            body {background-color: #eee;font: 1rem/1.2 sans-serif;color: #333;margin: 0;}
+            h1 {margin: 1rem 0 2rem;font-size: 2.5rem;border-bottom: solid 1px #ddd;padding: 0 0 1rem;}
+            fieldset {border: none;}
+            #app {position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;display: flex;flex-flow: column nowrap;justify-content: flex-start;align-items: center;padding: 1rem;}
+            .home, .mastercode, .guess-code, .win, .loose {text-align: center;}
+        </style>
     </head>
     <body>
 
         <main id="app">
             
-            <h1>mastermind</h1>
+            <h1>Superkopf</h1>
 
             <div v-if="script.start" class="home">
                 <p>

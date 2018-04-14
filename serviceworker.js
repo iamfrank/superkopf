@@ -1,4 +1,4 @@
-var CACHE_NAME = 'm4st3rm1nd-cache-v5';
+var CACHE_NAME = 'superkopf-cache-v2';
 var urlsToCache = [
     './index.html',
     //'./serviceworker.js',
