@@ -1,0 +1,16 @@
+{
+    "short_name": "M4st3rm1nd",
+    "name": "M4st3rm1nd by Frank Thomsen Renard",
+    "icons": [
+        {
+            "src": "img/fingerprint.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#333333",
+    "theme_color": "#333333",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "index.html"
+}
