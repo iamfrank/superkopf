@@ -63,6 +63,20 @@ vm = new Vue({
             this.script.start = false;
             this.script.make_master_code = true;
         },
+        initRandomGame: function() {
+            function getRandomNum() {
+                return Math.floor( (Math.random()*6)+1 )
+            }
+            this.mastercode = [
+                getRandomNum(),
+                getRandomNum(),
+                getRandomNum(),
+                getRandomNum()
+            ]
+            this.script.start = false;
+            this.script.guess_code = true;
+            this.doGuess();
+        },
         setMasterCodeColor: function(payload) {
             this.mastercode[payload.idx] = payload.color;
         },
@@ -94,7 +108,7 @@ vm = new Vue({
                 this.current_guess = [0,0,0,0];
             };
         },
-        updateAttempts: function () {
+        updateAttempts: function() {
             console.log(this.attempts);
             this.attempts.push({
                 guess: this.current_guess,
