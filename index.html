@@ -277,26 +277,14 @@
             <div v-if="script.start" class="home">
                 <img src="./img/logo.svg" alt="" style="width: 4rem; height: auto; margin: 0 0 1rem;">
                 <p>
-                    A puzzle game for two.<br>
-                    One creates the master code.<br>
-                    The other must guess it.
+                    A puzzle game.<br>
+                    Guess the kombination of colours in as few guesses as possible.
                 </p>
-                <button class="btn" @click="initMasterCode()">Play (2 players)</button>
-                <button class="btn" @click="initRandomGame()">Play (1 player)</button>
+                <button class="btn" @click="initRandomGame()">Play</button>
                 <div class="colorblind">
                     <label for="colblind">Enable color blind mode</label>
                     <input type="checkbox" v-model="colorblind_mode" id="colblind">
                 </div>
-            </div>
-
-            <div v-if="script.make_master_code" class="mastercode">
-                <h2>Create mastercode</h2>
-                <colorpicker v-for="(m, i) in mastercode" :idx="i" v-on:pick="setMasterCodeColor" :colorblindmode="colorblind_mode"></colorpicker>
-                <p>
-                    The other player will try to guess this code.<br>
-                    <em>Don't let him or her see it.</em>
-                </p>
-                <button class="btn" @click="initGuess()">Ready</button>
             </div>
 
             <div class="coderef" v-if="script.game_over">
@@ -359,8 +347,7 @@
                 'content-url': 'index.html', // show this page to offline users
                 'cache-version': 'v3',
                 'assets': [
-                    '/img/*.png', 
-                    '/js/main.js', 
+                    '/img/*.png',
                     '/js/vue.js', 
                     '/favicon.ico',
                     '/img/logo.svg'
@@ -426,11 +413,6 @@
                     colorblind_mode: false
                 },
                 methods: {
-                    initMasterCode: function() {
-                        alert('Hand the device to the person who will create the master code.');
-                        this.script.start = false;
-                        this.script.make_master_code = true;
-                    },
                     initRandomGame: function() {
                         function getRandomNum() {
                             return Math.floor( (Math.random()*6)+1 )
@@ -450,10 +432,6 @@
                     },
                     setGuessColor: function(payload) {
                         this.current_guess[payload.idx] = payload.color;
-                    },
-                    initGuess: function() {
-                        alert('Now hand the device to the other player');
-                        this.doGuess();
                     },
                     doGuess: function() {
                         this.script.make_master_code = false;
